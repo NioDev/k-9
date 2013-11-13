@@ -7,29 +7,39 @@
         android:layout_height="1dp"
         android:background="?android:attr/dividerHorizontal" />
 
-    <LinearLayout
+    <RelativeLayout
         style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content" >
+
+        <View
+            android:id="@+id/dividerVertical"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/import_settings"
+            android:layout_alignBottom="@+id/import_settings"
+            android:layout_centerHorizontal="true"
+            android:background="?android:attr/dividerVertical" />
 
         <Button
             android:id="@+id/import_settings"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_toLeftOf="@+id/dividerVertical"
             android:background="@drawable/selectable_item_background"
+            android:gravity="center"
             android:text="@string/settings_import" />
 
         <Button
             android:id="@+id/next"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_toRightOf="@+id/dividerVertical"
             android:background="@drawable/selectable_item_background"
+            android:gravity="center"
             android:text="@string/next_action" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </merge>

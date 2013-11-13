@@ -5,32 +5,34 @@ import com.fsck.k9.mail.store.ImapStore.AuthType;
 import com.fsck.k9.mail.store.ImapStore.ImapConnection;
 
 /**
- * Settings source for IMAP. Implemented in order to remove coupling between {@link ImapStore} and {@link ImapConnection}.
+ * Settings source for IMAP. Implemented in order to remove coupling between
+ * {@link ImapStore} and {@link ImapConnection}.
  */
-public interface ImapSettings {
-    String getHost();
+public interface ImapSettings
+{
+	String getHost();
 
-    int getPort();
+	int getPort();
 
-    int getConnectionSecurity();
+	int getConnectionSecurity();
 
-    AuthType getAuthType();
+	AuthType getAuthType();
 
-    String getUsername();
+	String getUsername();
 
-    String getPassword();
+	String getPassword();
 
-    boolean useCompression(int type);
+	boolean useCompression(int type);
 
-    String getPathPrefix();
+	String getPathPrefix();
 
-    void setPathPrefix(String prefix);
+	void setPathPrefix(String prefix);
 
-    String getPathDelimeter();
+	String getPathDelimeter();
 
-    void setPathDelimeter(String delimeter);
+	void setPathDelimeter(String delimeter);
 
-    String getCombinedPrefix();
+	String getCombinedPrefix();
 
-    void setCombinedPrefix(String prefix);
+	void setCombinedPrefix(String prefix);
 }

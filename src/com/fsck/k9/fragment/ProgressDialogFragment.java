@@ -4,52 +4,54 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 
-import com.actionbarsherlock.app.SherlockDialogFragment;
+public class ProgressDialogFragment extends DialogFragment
+{
+	protected static final String ARG_TITLE = "title";
+	protected static final String ARG_MESSAGE = "message";
 
+	public static ProgressDialogFragment newInstance(String title, String message)
+	{
+		ProgressDialogFragment fragment = new ProgressDialogFragment();
 
-public class ProgressDialogFragment extends SherlockDialogFragment {
-    protected static final String ARG_TITLE = "title";
-    protected static final String ARG_MESSAGE = "message";
+		Bundle args = new Bundle();
+		args.putString(ARG_TITLE, title);
+		args.putString(ARG_MESSAGE, message);
+		fragment.setArguments(args);
 
-    public static ProgressDialogFragment newInstance(String title, String message) {
-        ProgressDialogFragment fragment = new ProgressDialogFragment();
+		return fragment;
+	}
 
-        Bundle args = new Bundle();
-        args.putString(ARG_TITLE, title);
-        args.putString(ARG_MESSAGE, message);
-        fragment.setArguments(args);
+	@Override
+	public Dialog onCreateDialog(Bundle savedInstanceState)
+	{
+		Bundle args = getArguments();
+		String title = args.getString(ARG_TITLE);
+		String message = args.getString(ARG_MESSAGE);
 
-        return fragment;
-    }
+		ProgressDialog dialog = new ProgressDialog(getActivity());
+		dialog.setIndeterminate(true);
+		dialog.setTitle(title);
+		dialog.setMessage(message);
 
+		return dialog;
+	}
 
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Bundle args = getArguments();
-        String title = args.getString(ARG_TITLE);
-        String message = args.getString(ARG_MESSAGE);
+	@Override
+	public void onCancel(DialogInterface dialog)
+	{
+		CancelListener listener = (CancelListener) getActivity();
+		if (listener != null && listener instanceof CancelListener)
+		{
+			listener.onCancel(this);
+		}
 
-        ProgressDialog dialog = new ProgressDialog(getActivity());
-        dialog.setIndeterminate(true);
-        dialog.setTitle(title);
-        dialog.setMessage(message);
+		super.onCancel(dialog);
+	}
 
-        return dialog;
-    }
-
-    @Override
-    public void onCancel(DialogInterface dialog) {
-        CancelListener listener = (CancelListener) getActivity();
-        if (listener != null && listener instanceof CancelListener) {
-            listener.onCancel(this);
-        }
-
-        super.onCancel(dialog);
-    }
-
-
-    public interface CancelListener {
-        void onCancel(ProgressDialogFragment fragment);
-    }
+	public interface CancelListener
+	{
+		void onCancel(ProgressDialogFragment fragment);
+	}
 }

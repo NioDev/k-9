@@ -16,40 +16,46 @@
 
 package com.fsck.k9;
 
-import com.fsck.k9.helper.Contacts;
-import com.fsck.k9.mail.Address;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
 
-public class EmailAddressAdapter extends ResourceCursorAdapter {
-    private final Contacts mContacts;
+import com.fsck.k9.helper.Contacts;
+import com.fsck.k9.mail.Address;
 
-    public EmailAddressAdapter(Context context) {
-        super(context, R.layout.recipient_dropdown_item, null);
-        mContacts = Contacts.getInstance(context.getApplicationContext());
-    }
+public class EmailAddressAdapter extends ResourceCursorAdapter
+{
+	private final Contacts mContacts;
 
-    @Override
-    public final String convertToString(final Cursor cursor) {
-        final String name = mContacts.getName(cursor);
-        final String address = mContacts.getEmail(cursor);
+	public EmailAddressAdapter(Context context)
+	{
+		super(context, R.layout.recipient_dropdown_item, null);
+		mContacts = Contacts.getInstance(context.getApplicationContext());
+	}
 
-        return (address == null) ? "" : new Address(address, name).toString();
-    }
+	@Override
+	public final String convertToString(final Cursor cursor)
+	{
+		final String name = mContacts.getName(cursor);
+		final String address = mContacts.getEmail(cursor);
 
-    @Override
-    public final void bindView(final View view, final Context context, final Cursor cursor) {
-        final TextView text1 = (TextView) view.findViewById(R.id.text1);
-        final TextView text2 = (TextView) view.findViewById(R.id.text2);
-        text1.setText(mContacts.getName(cursor));
-        text2.setText(mContacts.getEmail(cursor));
-    }
+		return (address == null) ? "" : new Address(address, name).toString();
+	}
 
-    @Override
-    public Cursor runQueryOnBackgroundThread(CharSequence constraint) {
-        return mContacts.searchContacts(constraint);
-    }
+	@Override
+	public final void bindView(final View view, final Context context, final Cursor cursor)
+	{
+		final TextView text1 = (TextView) view.findViewById(R.id.text1);
+		final TextView text2 = (TextView) view.findViewById(R.id.text2);
+		text1.setText(mContacts.getName(cursor));
+		text2.setText(mContacts.getEmail(cursor));
+	}
+
+	@Override
+	public Cursor runQueryOnBackgroundThread(CharSequence constraint)
+	{
+		return mContacts.searchContacts(constraint);
+	}
 }

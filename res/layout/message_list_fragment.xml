@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.fsck.k9.view.K9PullToRefreshListView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/message_list"
+<uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ptr_layout"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_weight="5" />
+    android:layout_height="fill_parent" >
+
+    <com.fsck.k9.view.K9PullToRefreshListView
+        android:id="@+id/message_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="5" />
+
+    <include
+        android:id="@+id/empty_view"
+        layout="@layout/message_list_loading" />
+
+</uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout>

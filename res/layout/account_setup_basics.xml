@@ -17,14 +17,15 @@
         android:layout_height="fill_parent"
         android:layout_gravity="center_horizontal|center_vertical"
         android:orientation="vertical">
+
     <EditText
         android:id="@+id/account_email"
-        android:hint="@string/account_setup_basics_email_hint"
-        android:singleLine="true"
-        android:inputType="textEmailAddress"
-        android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        />
+        android:layout_height="wrap_content"
+        android:hint="@string/account_setup_basics_email_hint"
+        android:inputType="textEmailAddress"
+        android:singleLine="true" />
+
     <EditText
         android:id="@+id/account_password"
         android:inputType="textPassword"

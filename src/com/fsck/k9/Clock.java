@@ -20,13 +20,16 @@ package com.fsck.k9;
  * A class provide the current time (like {@link System#currentTimeMillis()}).
  * It's intended to be mocked out for unit tests.
  */
-public class Clock {
-    public static final Clock INSTANCE = new Clock();
+public class Clock
+{
+	public static final Clock INSTANCE = new Clock();
 
-    protected Clock() {
-    }
+	protected Clock()
+	{
+	}
 
-    public long getTime() {
-        return System.currentTimeMillis();
-    }
+	public long getTime()
+	{
+		return System.currentTimeMillis();
+	}
 }
