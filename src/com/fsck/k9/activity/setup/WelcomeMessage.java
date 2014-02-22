@@ -9,9 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.fsck.k9.fork.R;
 import com.fsck.k9.activity.Accounts;
 import com.fsck.k9.activity.K9Activity;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.helper.HtmlConverter;
 
 /**

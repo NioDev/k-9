@@ -26,6 +26,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.support.v4.util.LruCache;
 import android.widget.QuickContactBadge;
+
 import com.fsck.k9.helper.Contacts;
 import com.fsck.k9.helper.StringUtils;
 import com.fsck.k9.mail.Address;

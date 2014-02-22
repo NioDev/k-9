@@ -1,6 +1,12 @@
 
 package com.fsck.k9.activity.setup;
 
+import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -15,15 +21,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import com.fsck.k9.*;
+
+import com.fsck.k9.Account;
+import com.fsck.k9.EmailAddressValidator;
+import com.fsck.k9.K9;
+import com.fsck.k9.Preferences;
 import com.fsck.k9.activity.K9Activity;
 import com.fsck.k9.activity.setup.AccountSetupCheckSettings.CheckDirection;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.helper.Utility;
-import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URLEncoder;
 
 /**
  * Prompts the user for the email address and password.

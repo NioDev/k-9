@@ -24,6 +24,8 @@
 
 package com.fsck.k9.activity.setup;
 
+import com.fsck.k9.fork.R;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -32,7 +34,6 @@ import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.SeekBar;
-import com.fsck.k9.*;
 
 
 /**

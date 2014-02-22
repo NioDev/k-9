@@ -106,22 +106,9 @@ public class Regex
 	// input. This is to stop foo.sure from
 	// matching as foo.su
 
-<<<<<<< HEAD
 	public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}"
 			+ "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+");
-=======
-    public static final Pattern EMAIL_ADDRESS_PATTERN
-    = Pattern.compile(
-          "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-          "\\@" +
-          "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-          "(" +
-          "\\." +
-          "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-          ")+"
-      );
 
-    public static final String BITCOIN_URI_PATTERN =
-            "bitcoin:[1-9a-km-zA-HJ-NP-Z]{27,34}(\\?[a-zA-Z0-9$\\-_.+!*'(),%:@&=]*)?";
->>>>>>> master
+	public static final String BITCOIN_URI_PATTERN = "bitcoin:[1-9a-km-zA-HJ-NP-Z]{27,34}(\\?[a-zA-Z0-9$\\-_.+!*'(),%:@&=]*)?";
+
 }

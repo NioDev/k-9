@@ -1,18 +1,19 @@
 package com.fsck.k9.net.ssl;
 
-import android.util.Log;
-
-import com.fsck.k9.K9;
+import java.io.IOException;
+import java.net.Socket;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
-import java.io.IOException;
-import java.net.Socket;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.util.*;
+
+import android.util.Log;
+
+import com.fsck.k9.K9;
 
 
 /**

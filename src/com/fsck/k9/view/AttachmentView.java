@@ -28,9 +28,9 @@ import android.widget.Toast;
 
 import com.fsck.k9.Account;
 import com.fsck.k9.K9;
-import com.fsck.k9.fork.R;
 import com.fsck.k9.controller.MessagingController;
 import com.fsck.k9.controller.MessagingListener;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.helper.MediaScannerNotifier;
 import com.fsck.k9.helper.SizeFormatter;
 import com.fsck.k9.helper.Utility;

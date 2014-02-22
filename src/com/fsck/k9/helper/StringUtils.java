@@ -3,16 +3,10 @@ package com.fsck.k9.helper;
 public final class StringUtils
 {
 
-<<<<<<< HEAD
 	public static boolean isNullOrEmpty(String string)
 	{
-		return string == null || string.length() == 0;
+		return string == null || string.isEmpty();
 	}
-=======
-    public static boolean isNullOrEmpty(String string){
-        return string == null || string.isEmpty();
-    }
->>>>>>> master
 
 	public static boolean containsAny(String haystack, String[] needles)
 	{

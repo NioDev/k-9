@@ -14,9 +14,9 @@ import android.widget.EditText;
 
 import com.fsck.k9.Account;
 import com.fsck.k9.Preferences;
-import com.fsck.k9.fork.R;
 import com.fsck.k9.activity.Accounts;
 import com.fsck.k9.activity.K9Activity;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.helper.Utility;
 
 public class AccountSetupNames extends K9Activity implements OnClickListener

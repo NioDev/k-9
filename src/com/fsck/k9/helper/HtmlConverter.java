@@ -461,7 +461,6 @@ public class HtmlConverter
 			}
 	}
 
-<<<<<<< HEAD
 	/**
 	 * Searches for link-like text in a string and turn it into a link. Append
 	 * the result to <tt>outputBuffer</tt>. <tt>text</tt> is not modified.
@@ -471,13 +470,15 @@ public class HtmlConverter
 	 * @param outputBuffer
 	 *            Buffer to append linked text to.
 	 */
-	private static void linkifyText(final String text, final StringBuffer outputBuffer)
+	protected static void linkifyText(final String text, final StringBuffer outputBuffer)
 	{
-		Matcher m = Regex.WEB_URL_PATTERN.matcher(text);
+		String prepared = text.replaceAll(Regex.BITCOIN_URI_PATTERN, "<a href=\"$0\">$0</a>");
+
+		Matcher m = Regex.WEB_URL_PATTERN.matcher(prepared);
 		while (m.find())
 		{
 			int start = m.start();
-			if (start == 0 || (start != 0 && text.charAt(start - 1) != '@'))
+			if (start == 0 || (start != 0 && prepared.charAt(start - 1) != '@'))
 			{
 				if (m.group().indexOf(':') > 0)
 				{ // With no URI-schema we may get "http:/" links with the
@@ -494,30 +495,6 @@ public class HtmlConverter
 				m.appendReplacement(outputBuffer, "$0");
 			}
 		}
-=======
-    /**
-     * Searches for link-like text in a string and turn it into a link. Append the result to
-     * <tt>outputBuffer</tt>. <tt>text</tt> is not modified.
-     * @param text Plain text to be linkified.
-     * @param outputBuffer Buffer to append linked text to.
-     */
-    protected static void linkifyText(final String text, final StringBuffer outputBuffer) {
-        String prepared = text.replaceAll(Regex.BITCOIN_URI_PATTERN, "<a href=\"$0\">$0</a>");
-
-        Matcher m = Regex.WEB_URL_PATTERN.matcher(prepared);
-        while (m.find()) {
-            int start = m.start();
-            if (start == 0 || (start != 0 && prepared.charAt(start - 1) != '@')) {
-                if (m.group().indexOf(':') > 0) { // With no URI-schema we may get "http:/" links with the second / missing
-                    m.appendReplacement(outputBuffer, "<a href=\"$0\">$0</a>");
-                } else {
-                    m.appendReplacement(outputBuffer, "<a href=\"http://$0\">$0</a>");
-                }
-            } else {
-                m.appendReplacement(outputBuffer, "$0");
-            }
-        }
->>>>>>> master
 
 		m.appendTail(outputBuffer);
 	}

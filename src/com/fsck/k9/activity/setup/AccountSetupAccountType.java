@@ -14,8 +14,8 @@ import android.widget.Toast;
 import com.fsck.k9.Account;
 import com.fsck.k9.K9;
 import com.fsck.k9.Preferences;
-import com.fsck.k9.fork.R;
 import com.fsck.k9.activity.K9Activity;
+import com.fsck.k9.fork.R;
 
 /**
  * Prompts the user to select an account type. The account type, along with the

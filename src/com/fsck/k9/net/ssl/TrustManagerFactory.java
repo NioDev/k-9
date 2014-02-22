@@ -1,14 +1,6 @@
 
 package com.fsck.k9.net.ssl;
 
-import android.util.Log;
-
-import com.fsck.k9.helper.DomainNameChecker;
-import com.fsck.k9.mail.CertificateChainException;
-import com.fsck.k9.security.LocalKeyStore;
-
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -16,6 +8,15 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+import android.util.Log;
+
+import com.fsck.k9.helper.DomainNameChecker;
+import com.fsck.k9.mail.CertificateChainException;
+import com.fsck.k9.security.LocalKeyStore;
 
 public final class TrustManagerFactory {
     private static final String LOG_TAG = "TrustManagerFactory";

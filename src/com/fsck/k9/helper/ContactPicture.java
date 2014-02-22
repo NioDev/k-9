@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.TypedValue;
 
 import com.fsck.k9.K9;
-import com.fsck.k9.fork.R;
 import com.fsck.k9.activity.misc.ContactPictureLoader;
+import com.fsck.k9.fork.R;
 
 public class ContactPicture
 {
