@@ -4125,10 +4125,7 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
 		mEmptyView.setVisibility(View.GONE);
 
 		// Enable pull-to-refresh if allowed
-		if (isCheckMailSupported())
-		{
-			setPullToRefreshEnabled(true);
-		}
+		setPullToRefreshEnabled(isPullToRefreshAllowed());
 
 		final int loaderId = loader.getId();
 		mCursors[loaderId] = data;
@@ -4399,8 +4396,22 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
 	@Override
 	public void onRefreshStarted(View view)
 	{
-		// TODO Auto-generated method stub
-
+		if (isCheckMailSupported())
+		{
+			if (mSearch.isManualSearch() && mSingleAccountMode && mAccount.allowRemoteSearch())
+			{
+				// Notify PullToRefreshAttacher that the refresh has finished
+				if (mPullToRefreshAttacher != null)
+				{
+					mPullToRefreshAttacher.setRefreshComplete();
+				}
+				onRemoteSearchRequested();
+			}
+			else
+			{
+				checkMail();
+			}
+		}
 	}
 
 }
