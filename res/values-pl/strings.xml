@@ -205,8 +205,7 @@ Wszelkie zgłoszenia usterek, zapytania oraz nowe pomysły prosimy przesyłać z
     <string name="abbrev_kilobytes">KB</string>
     <string name="abbrev_bytes">B</string>
 
-    <string name="account_size_changed">
-    Objętość konta \"<xliff:g id="account">%s</xliff:g>\" zmniejszyła się z <xliff:g id="oldSize">%s</xliff:g> do <xliff:g id="newSize">%s</xliff:g></string>
+    <string name="account_size_changed">Objętość konta \"<xliff:g id="account">%s</xliff:g>\" zmniejszyła się z <xliff:g id="oldSize">%s</xliff:g> do <xliff:g id="newSize">%s</xliff:g></string>
 
     <string name="compacting_account">Kompaktuję konto \"<xliff:g id="account">%s</xliff:g>\"</string>
     <string name="clearing_account">Czyszczę konto \"<xliff:g id="account">%s</xliff:g>\"</string>
@@ -990,7 +989,7 @@ Wszelkie zgłoszenia usterek, zapytania oraz nowe pomysły prosimy przesyłać z
       (1) http://developer.android.com/guide/topics/resources/string-resource.html#Plurals
 
     -->
-    <plurals name="dialog_confirm_delete_message">
+    <plurals name="dialog_confirm_delete_messages">
         <item quantity="one">Na pewno chcesz usunąć wiadomość?</item>
         <item quantity="other">Na pewno chcesz usunąć <xliff:g id="message_count">%1$d</xliff:g> wiadomości?</item>
     </plurals>
@@ -1027,7 +1026,7 @@ Wszelkie zgłoszenia usterek, zapytania oraz nowe pomysły prosimy przesyłać z
     <string name="settings_export_success">Zapisano ustawienia do <xliff:g id="filename">%s</xliff:g></string>
     <string name="settings_import_global_settings_success">Importowano ustawienia z <xliff:g id="filename">%s</xliff:g></string>
     <string name="settings_import_success">Importowano <xliff:g id="accounts">%s</xliff:g> z <xliff:g id="filename">%s</xliff:g></string>
-    <plurals name="settings_import_success">
+    <plurals name="settings_import_accounts">
         <item quantity="one">1 konto</item>
         <item quantity="other"><xliff:g id="numAccounts">%s</xliff:g> kont</item>
     </plurals>

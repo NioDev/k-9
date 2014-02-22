@@ -52,6 +52,7 @@ public class DomainNameChecker
 	private static final int ALT_DNS_NAME = 2;
 	private static final int ALT_IPA_NAME = 7;
 
+<<<<<<< HEAD
 	/**
 	 * Checks the site certificate against the domain name of the site being
 	 * visited
@@ -68,6 +69,23 @@ public class DomainNameChecker
 		{
 			return false;
 		}
+=======
+    /**
+     * Checks the site certificate against the domain name of the site being
+     * visited
+     *
+     * @param certificate
+     *            The certificate to check
+     * @param thisDomain
+     *            The domain name of the site being visited
+     * @return True iff if there is a domain match as specified by RFC2818
+     */
+    public static boolean match(X509Certificate certificate, String thisDomain) {
+        if ((certificate == null) || (thisDomain == null)
+                || thisDomain.isEmpty()) {
+            return false;
+        }
+>>>>>>> master
 
 		thisDomain = thisDomain.toLowerCase(Locale.US);
 		if (!isIpAddress(thisDomain))
@@ -80,6 +98,7 @@ public class DomainNameChecker
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return True iff the domain name is specified as an IP address
 	 */
@@ -89,6 +108,15 @@ public class DomainNameChecker
 		{
 			return false;
 		}
+=======
+    /**
+     * @return True iff the domain name is specified as an IP address
+     */
+    private static boolean isIpAddress(String domain) {
+        if ((domain == null) || domain.isEmpty()) {
+            return false;
+        }
+>>>>>>> master
 
 		boolean rval;
 		try
@@ -136,6 +164,7 @@ public class DomainNameChecker
 			Log.v(K9.LOG_TAG, "DomainNameChecker.matchIpAddress(): this domain: " + thisDomain);
 		}
 
+<<<<<<< HEAD
 		try
 		{
 			Collection<?> subjectAltNames = certificate.getSubjectAlternativeNames();
@@ -169,10 +198,35 @@ public class DomainNameChecker
 		catch (CertificateParsingException e)
 		{
 		}
+=======
+        try {
+            Collection<List<?>> subjectAltNames = certificate.getSubjectAlternativeNames();
+            if (subjectAltNames != null) {
+                for (List<?> altNameEntry : subjectAltNames) {
+                    if ((altNameEntry != null) && (2 <= altNameEntry.size())) {
+                        Integer altNameType = (Integer)(altNameEntry.get(0));
+                        if (altNameType != null && altNameType.intValue() == ALT_IPA_NAME) {
+                            String altName = (String)(altNameEntry.get(1));
+                            if (altName != null) {
+                                if (K9.DEBUG) {
+                                    Log.v(K9.LOG_TAG, "alternative IP: " + altName);
+                                }
+                                if (thisDomain.equalsIgnoreCase(altName)) {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (CertificateParsingException e) {
+        }
+>>>>>>> master
 
 		return false;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Checks the site certificate against the DNS domain name of the site being
 	 * visited
@@ -225,6 +279,47 @@ public class DomainNameChecker
 				{
 					errorMessage = "failed to parse certificate";
 				}
+=======
+    /**
+     * Checks the site certificate against the DNS domain name of the site being
+     * visited
+     *
+     * @param certificate
+     *            The certificate to check
+     * @param thisDomain
+     *            The DNS domain name of the site being visited
+     * @return True iff if there is a domain match as specified by RFC2818
+     */
+    private static boolean matchDns(X509Certificate certificate, String thisDomain) {
+        boolean hasDns = false;
+        try {
+            Collection<List<?>> subjectAltNames = certificate.getSubjectAlternativeNames();
+            if (subjectAltNames != null) {
+                for (List<?> altNameEntry : subjectAltNames) {
+                    if ((altNameEntry != null) && (2 <= altNameEntry.size())) {
+                        Integer altNameType = (Integer)(altNameEntry.get(0));
+                        if (altNameType != null && altNameType.intValue() == ALT_DNS_NAME) {
+                            hasDns = true;
+                            String altName = (String)(altNameEntry.get(1));
+                            if (altName != null && matchDns(thisDomain, altName)) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (CertificateParsingException e) {
+            // one way we can get here is if an alternative name starts with
+            // '*' character, which is contrary to one interpretation of the
+            // spec (a valid DNS name must start with a letter); there is no
+            // good way around this, and in order to be compatible we proceed
+            // to check the common name (ie, ignore alternative names)
+            if (K9.DEBUG) {
+                String errorMessage = e.getMessage();
+                if (errorMessage == null) {
+                    errorMessage = "failed to parse certificate";
+                }
+>>>>>>> master
 
 				Log.v(K9.LOG_TAG, "DomainNameChecker.matchDns(): " + errorMessage);
 			}
@@ -253,10 +348,17 @@ public class DomainNameChecker
 			Log.v(K9.LOG_TAG, "DomainNameChecker.matchDns():" + " this domain: " + thisDomain + " that domain: " + thatDomain);
 		}
 
+<<<<<<< HEAD
 		if ((thisDomain == null) || (thisDomain.length() == 0) || (thatDomain == null) || (thatDomain.length() == 0))
 		{
 			return false;
 		}
+=======
+        if ((thisDomain == null) || thisDomain.isEmpty()
+                || (thatDomain == null) || thatDomain.isEmpty()) {
+            return false;
+        }
+>>>>>>> master
 
 		thatDomain = thatDomain.toLowerCase(Locale.US);
 

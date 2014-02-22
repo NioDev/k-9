@@ -23,7 +23,24 @@ public abstract class Message implements Part, CompositeBody
 		TO, CC, BCC,
 	}
 
+<<<<<<< HEAD
 	protected String mUid;
+=======
+public abstract class Message implements Part, CompositeBody {
+    private static final Flag[] EMPTY_FLAG_ARRAY = new Flag[0];
+
+    private MessageReference mReference = null;
+
+    public enum RecipientType {
+        TO, CC, BCC,
+    }
+
+    protected String mUid;
+
+    protected Set<Flag> mFlags = new HashSet<Flag>();
+
+    protected Date mInternalDate;
+>>>>>>> master
 
 	protected HashSet<Flag> mFlags = new HashSet<Flag>();
 
