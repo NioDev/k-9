@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
 
+import com.fsck.k9.fork.R;
 import com.fsck.k9.helper.Contacts;
 import com.fsck.k9.mail.Address;
 

@@ -3,6 +3,8 @@ package com.fsck.k9.activity;
 import java.util.Collection;
 import java.util.List;
 
+import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshAttacher;
+import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshAttacher.Options;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -34,7 +36,7 @@ import com.fsck.k9.Account.SortType;
 import com.fsck.k9.K9;
 import com.fsck.k9.K9.SplitViewMode;
 import com.fsck.k9.Preferences;
-import com.fsck.k9.R;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.activity.misc.SwipeGestureDetector.OnSwipeGestureListener;
 import com.fsck.k9.activity.setup.AccountSettings;
 import com.fsck.k9.activity.setup.FolderSettings;
@@ -187,6 +189,8 @@ public class MessageList extends K9FragmentActivity implements MessageListFragme
 	private boolean mMessageListWasDisplayed = false;
 	private ViewSwitcher mViewSwitcher;
 
+	private PullToRefreshAttacher mPullToRefreshAttacher;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -228,6 +232,13 @@ public class MessageList extends K9FragmentActivity implements MessageListFragme
 		initializeLayout();
 		initializeFragments();
 		displayViews();
+
+		/**
+		 * Here we create a PullToRefreshAttacher manually without an Options
+		 * instance. PullToRefreshAttacher will manually create one using
+		 * default values.
+		 */
+		mPullToRefreshAttacher = PullToRefreshAttacher.get(this);
 
 		ChangeLog cl = new ChangeLog(this);
 		if (cl.isFirstRun())
@@ -1375,6 +1386,7 @@ public class MessageList extends K9FragmentActivity implements MessageListFragme
 	@Override
 	public void openMessage(MessageReference messageReference)
 	{
+		Log.e("Debug", "openMessage in");
 		Preferences prefs = Preferences.getPreferences(getApplicationContext());
 		Account account = prefs.getAccount(messageReference.accountUuid);
 		String folderName = messageReference.folderName;
@@ -1385,6 +1397,7 @@ public class MessageList extends K9FragmentActivity implements MessageListFragme
 		}
 		else
 		{
+			Log.e("Debug", "openMessage");
 			mMessageViewContainer.removeView(mMessageViewPlaceHolder);
 
 			if (mMessageListFragment != null)
@@ -1676,7 +1689,7 @@ public class MessageList extends K9FragmentActivity implements MessageListFragme
 		}
 		else
 		{
-			recreate();
+			recreateView();
 		}
 	}
 
@@ -1885,5 +1898,10 @@ public class MessageList extends K9FragmentActivity implements MessageListFragme
 		{
 			removeMessageViewFragment();
 		}
+	}
+
+	public PullToRefreshAttacher getPullToRefreshAttacher()
+	{
+		return mPullToRefreshAttacher;
 	}
 }

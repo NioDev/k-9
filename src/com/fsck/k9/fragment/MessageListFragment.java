@@ -73,10 +73,11 @@ import com.fsck.k9.Account.SortType;
 import com.fsck.k9.FontSizes;
 import com.fsck.k9.K9;
 import com.fsck.k9.Preferences;
-import com.fsck.k9.R;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.activity.ActivityListener;
 import com.fsck.k9.activity.ChooseFolder;
 import com.fsck.k9.activity.FolderInfoHolder;
+import com.fsck.k9.activity.MessageList;
 import com.fsck.k9.activity.MessageReference;
 import com.fsck.k9.activity.misc.ContactPictureLoader;
 import com.fsck.k9.cache.EmailProviderCache;
@@ -876,7 +877,6 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
 		{
 			return;
 		}
-
 		if (mSelectedCount > 0)
 		{
 			toggleMessageSelect(position);
@@ -1326,19 +1326,18 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
 
 	private void initializePullToRefresh(LayoutInflater inflater, View layout)
 	{
+		// Do no set pull to refresh if it is the display of a thread of
+		// messages
+		if (mIsThreadDisplay)
+			return;
 		// mPullToRefreshView = (PullToRefreshListView)
 		// layout.findViewById(R.id.message_list);
 
 		// Set empty view
-		// View loadingView = inflater.inflate(R.layout.message_list_loading,
+		// View loadingView =
+		// inflater.inflate(R.layout.message_list_loading,
 		// null);
 		// mPullToRefreshView.setEmptyView(loadingView);
-		/**
-		 * Here we create a PullToRefreshAttacher manually without an Options
-		 * instance. PullToRefreshAttacher will manually create one using
-		 * default values.
-		 */
-		mPullToRefreshAttacher = PullToRefreshAttacher.get(getActivity());
 
 		// if (isCheckMailSupported())
 		// {
@@ -1356,7 +1355,8 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
 		// onRemoteSearchRequested();
 		// }
 		// });
-		// ILoadingLayout proxy = mPullToRefreshView.getLoadingLayoutProxy();
+		// ILoadingLayout proxy =
+		// mPullToRefreshView.getLoadingLayoutProxy();
 		// proxy.setPullLabel(getString(R.string.pull_to_refresh_remote_search_from_local_search_pull));
 		// proxy.setReleaseLabel(getString(R.string.pull_to_refresh_remote_search_from_local_search_release));
 		// }
@@ -1375,13 +1375,16 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
 		// }
 		// }
 
-		// Set the Refreshable View to be the ListView and the refresh listener
+		// Set the Refreshable View to be the ListView and the refresh
+		// listener
 		// to be this.
+		mPullToRefreshAttacher = ((MessageList) getActivity()).getPullToRefreshAttacher();
+
 		PullToRefreshLayout ptrLayout = (PullToRefreshLayout) layout.findViewById(R.id.ptr_layout);
 		ptrLayout.setPullToRefreshAttacher(mPullToRefreshAttacher, this);
 
 		// Disable pull-to-refresh until the message list has been loaded
-		setPullToRefreshEnabled(false);
+		setPullToRefreshEnabled(mPullToRefreshAttacher.isRefreshing());
 	}
 
 	/**
@@ -1392,7 +1395,10 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
 	 */
 	private void setPullToRefreshEnabled(boolean enable)
 	{
-		mPullToRefreshAttacher.setEnabled(enable);
+		if (mPullToRefreshAttacher != null)
+		{
+			mPullToRefreshAttacher.setEnabled(enable);
+		}
 		// mPullToRefreshView.setMode((enable) ?
 		// PullToRefreshBase.Mode.PULL_FROM_START :
 		// PullToRefreshBase.Mode.DISABLED);
@@ -2000,15 +2006,15 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
 
 			int listViewPosition = mListView.pointToPosition(listX, listY);
 
-			toggleMessageSelect(listViewPosition);
+			toggleMessageSelect((listViewPosition + 0));
 		}
 	}
 
 	private int listViewToAdapterPosition(int position)
 	{
-		if (position > 0 && position <= mAdapter.getCount())
+		if (position >= 0 && position < mAdapter.getCount())
 		{
-			return position - 1;
+			return position;
 		}
 
 		return AdapterView.INVALID_POSITION;
@@ -2018,7 +2024,7 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
 	{
 		if (position >= 0 && position < mAdapter.getCount())
 		{
-			return position + 1;
+			return position;
 		}
 
 		return AdapterView.INVALID_POSITION;
@@ -2522,6 +2528,7 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
 					{
 					case R.id.selected_checkbox:
 						toggleMessageSelectWithAdapterPosition(position);
+
 						break;
 					case R.id.flagged_bottom_right:
 					case R.id.flagged_center_right:
@@ -4384,7 +4391,10 @@ public class MessageListFragment extends Fragment implements OnItemClickListener
 			if (mSearch.isManualSearch() && mSingleAccountMode && mAccount.allowRemoteSearch())
 			{
 				// Notify PullToRefreshAttacher that the refresh has finished
-				mPullToRefreshAttacher.setRefreshComplete();
+				if (mPullToRefreshAttacher != null)
+				{
+					mPullToRefreshAttacher.setRefreshComplete();
+				}
 				onRemoteSearchRequested();
 			}
 			else

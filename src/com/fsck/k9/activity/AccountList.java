@@ -19,7 +19,7 @@ import com.fsck.k9.BaseAccount;
 import com.fsck.k9.FontSizes;
 import com.fsck.k9.K9;
 import com.fsck.k9.Preferences;
-import com.fsck.k9.R;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.search.SearchAccount;
 
 /**

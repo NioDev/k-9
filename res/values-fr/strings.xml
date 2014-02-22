@@ -31,14 +31,14 @@ Android Localizer (aiLocalizer)
     <!-- This should make it easier for forks to change the branding -->
 
     <!-- Used in AndroidManifest.xml -->
-    <string name="app_name">K-9 Mail</string>
-    <string name="beta_app_name">K-9 Mail BETA</string>
+    <string name="app_name">K-9 FarMail</string>
+    <string name="beta_app_name">K-9 FarMail BETA</string>
 
     <string name="shortcuts_title">Comptes K-9</string>
     <string name="unread_widget_label">K-9 non lus</string>
 
-    <string name="remote_control_label">Contrôle à distance de K-9 Mail</string>
-    <string name="remote_control_desc">Permettre à cette application de contrôler les paramètres et activités de K-9 Mail</string>
+    <string name="remote_control_label">Contrôle à distance de K-9 FarMail</string>
+    <string name="remote_control_desc">Permettre à cette application de contrôler les paramètres et activités de K-9 FarMail</string>
 
 
     <!-- Used in the about dialog -->
@@ -48,12 +48,12 @@ Android Localizer (aiLocalizer)
 
 
     <!-- Welcome message -->
-    <string name="welcome_message_title">Bienvenue sur K-9 Mail</string>
+    <string name="welcome_message_title">Bienvenue sur K-9 FarMail</string>
     <string name="accounts_welcome"><![CDATA[
 <p>
-K-9 Mail est un client de messagerie open source pour Android basé sur le client standard Android Mail.
+K-9 FarMail est un client de messagerie open source pour Android basé sur le client standard Android Mail.
 </p><p>
-Voici ce que K-9 Mail apporte de plus\u00A0:
+Voici ce que K-9 FarMail apporte de plus\u00A0:
 </p>
 <ul>
   <li>La technologie PUSH en passant par le protocole IMAP</li>
@@ -71,7 +71,7 @@ Voici ce que K-9 Mail apporte de plus\u00A0:
   <li>…et bien plus encore</li>
 </ul>
 <p>
-Veuillez noter que K-9 Mail ne prend pas en charge les comptes Hotmail et, comme d\'autres clients, a quelques ennuis avec les serveurs Microsoft Exchange.
+Veuillez noter que K-9 FarMail ne prend pas en charge les comptes Hotmail et, comme d\'autres clients, a quelques ennuis avec les serveurs Microsoft Exchange.
 </p><p>
 Si vous avez des suggestions, découvert des bugs ou simplement une idée de fonctionnalité, n\'hésitez pas à vous rendre ici\u00A0:
 <a href="http://k9mail.googlecode.com/">http://k9mail.googlecode.com/</a> (en anglais).
@@ -80,14 +80,14 @@ Si vous avez des suggestions, découvert des bugs ou simplement une idée de fon
 
 
     <!-- Default signature -->
-    <string name="default_signature">-- \nEnvoyé de mon téléphone Android avec K-9 Mail. Excusez la brièveté.</string>
+    <string name="default_signature">-- \nEnvoyé de mon téléphone Android avec K-9 FarMail. Excusez la brièveté.</string>
 
 
     <!-- General strings that include the app name -->
-    <string name="account_delete_dlg_instructions_fmt">Le compte «\u00A0<xliff:g id="account">%s</xliff:g>\u00A0» sera supprimé de K-9 Mail.</string>
-    <string name="account_recreate_dlg_instructions_fmt">Toutes les données du compte «\u00A0<xliff:g id="account">%s</xliff:g>\u00A0» vont être effacées de K-9 Mail, mais les paramètres seront conservés.</string>
-    <string name="account_clear_dlg_instructions_fmt">Tous les messages du compte «\u00A0<xliff:g id="account">%s</xliff:g>\u00A0» vont être effacés de K-9 Mail, mais les paramètres seront conservés.</string>
-    <string name="insufficient_apg_permissions">K-9 Mail n\'a pas la permission d\'accéder à APG, veuillez réinstaller K-9 Mail pour corriger cela.</string>
+    <string name="account_delete_dlg_instructions_fmt">Le compte «\u00A0<xliff:g id="account">%s</xliff:g>\u00A0» sera supprimé de K-9 FarMail.</string>
+    <string name="account_recreate_dlg_instructions_fmt">Toutes les données du compte «\u00A0<xliff:g id="account">%s</xliff:g>\u00A0» vont être effacées de K-9 FarMail, mais les paramètres seront conservés.</string>
+    <string name="account_clear_dlg_instructions_fmt">Tous les messages du compte «\u00A0<xliff:g id="account">%s</xliff:g>\u00A0» vont être effacés de K-9 FarMail, mais les paramètres seront conservés.</string>
+    <string name="insufficient_apg_permissions">K-9 FarMail n\'a pas la permission d\'accéder à APG, veuillez réinstaller K-9 FarMail pour corriger cela.</string>
 
 
 

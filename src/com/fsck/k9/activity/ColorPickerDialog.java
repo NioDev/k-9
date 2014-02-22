@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.fsck.k9.R;
+import com.fsck.k9.fork.R;
 import com.larswerkman.colorpicker.ColorPicker;
 
 /**

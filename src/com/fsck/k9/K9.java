@@ -32,6 +32,7 @@ import com.fsck.k9.activity.MessageCompose;
 import com.fsck.k9.activity.UpgradeDatabases;
 import com.fsck.k9.controller.MessagingController;
 import com.fsck.k9.controller.MessagingListener;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.mail.Address;
 import com.fsck.k9.mail.Message;
 import com.fsck.k9.mail.MessagingException;

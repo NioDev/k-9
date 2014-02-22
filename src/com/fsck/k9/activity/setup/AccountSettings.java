@@ -28,7 +28,7 @@ import com.fsck.k9.Account.QuoteStyle;
 import com.fsck.k9.K9;
 import com.fsck.k9.NotificationSetting;
 import com.fsck.k9.Preferences;
-import com.fsck.k9.R;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.activity.ChooseFolder;
 import com.fsck.k9.activity.ChooseIdentity;
 import com.fsck.k9.activity.ColorPickerDialog;

@@ -20,7 +20,7 @@ import com.fsck.k9.K9;
 import com.fsck.k9.K9.NotificationHideSubject;
 import com.fsck.k9.K9.SplitViewMode;
 import com.fsck.k9.K9.Theme;
-import com.fsck.k9.R;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.preferences.Settings.BooleanSetting;
 import com.fsck.k9.preferences.Settings.ColorSetting;
 import com.fsck.k9.preferences.Settings.EnumSetting;

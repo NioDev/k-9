@@ -13,7 +13,7 @@ import android.webkit.WebSettings;
 import android.widget.Toast;
 
 import com.fsck.k9.K9;
-import com.fsck.k9.R;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.helper.HtmlConverter;
 
 public class MessageWebView extends RigidWebView

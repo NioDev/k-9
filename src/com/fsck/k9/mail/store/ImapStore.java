@@ -62,7 +62,7 @@ import android.util.Log;
 import com.beetstra.jutf7.CharsetProvider;
 import com.fsck.k9.Account;
 import com.fsck.k9.K9;
-import com.fsck.k9.R;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.controller.MessageRetrievalListener;
 import com.fsck.k9.helper.StringUtils;
 import com.fsck.k9.helper.Utility;

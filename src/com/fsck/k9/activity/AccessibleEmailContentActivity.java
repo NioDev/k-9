@@ -54,7 +54,7 @@ public class AccessibleEmailContentActivity extends ListActivity
 
 		String[] listItems = cleanedList.toArray(EMPTY_STRING_ARRAY);
 
-		setContentView(com.fsck.k9.R.layout.accessible_email_content);
+		setContentView(com.fsck.k9.fork.R.layout.accessible_email_content);
 		setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems));
 	}
 

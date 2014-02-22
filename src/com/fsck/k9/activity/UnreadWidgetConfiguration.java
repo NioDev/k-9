@@ -8,7 +8,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 
 import com.fsck.k9.BaseAccount;
-import com.fsck.k9.R;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.provider.UnreadWidgetProvider;
 
 /**

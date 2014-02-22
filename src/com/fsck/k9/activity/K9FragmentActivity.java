@@ -35,7 +35,7 @@ public class K9FragmentActivity extends ActionBarActivity implements K9ActivityM
 
 	// Backwards compatible recreate().
 	@SuppressLint("NewApi")
-	public void recreate()
+	public void recreateView()
 	{
 		if (android.os.Build.VERSION.SDK_INT >= 11)
 		{

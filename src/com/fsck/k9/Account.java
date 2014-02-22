@@ -23,6 +23,7 @@ import android.util.Log;
 
 import com.fsck.k9.crypto.Apg;
 import com.fsck.k9.crypto.CryptoProvider;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.helper.Utility;
 import com.fsck.k9.mail.Address;
 import com.fsck.k9.mail.Folder.FolderClass;

@@ -11,7 +11,7 @@ import android.content.SharedPreferences;
 
 import com.fsck.k9.EmailAddressValidator;
 import com.fsck.k9.K9;
-import com.fsck.k9.R;
+import com.fsck.k9.fork.R;
 import com.fsck.k9.preferences.Settings.BooleanSetting;
 import com.fsck.k9.preferences.Settings.InvalidSettingValueException;
 import com.fsck.k9.preferences.Settings.SettingsDescription;
